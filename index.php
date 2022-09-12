@@ -149,11 +149,23 @@
 
 <html lang="en">
 	<head>
+		<!-- Document metadata -->
 		<meta charset="utf-8">
+		<meta name="author" content="Florian Trayon" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+		<!-- Document title -->
 		<title>GmodStore Downloader</title>
 
+		<!-- Document icons -->
+		<link rel="icon" type="image/webp" sizes="16x16" href="assets/favicons/16x16.webp" />
+		<link rel="icon" type="image/webp" sizes="32x32" href="assets/favicons/32x32.webp" />
+		<link rel="icon" type="image/webp" sizes="48x48" href="assets/favicons/48x48.webp" />
+		<link rel="icon" type="image/webp" sizes="192x192" href="assets/favicons/192x192.webp" />
+		<link rel="icon" type="image/webp" sizes="512x512" href="assets/favicons/512x512.webp" />
+		<link rel="apple-touch-icon" href="assets/favicons/180x180.webp" />
+
+		<!-- CSS style rules -->
 		<style>
 			input[type = text]
 			{
