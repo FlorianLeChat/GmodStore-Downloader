@@ -167,8 +167,15 @@
 
 		<!-- CSS style rules -->
 		<style>
+			h1 a
+			{
+				/* Home page title */
+				text-decoration: none;
+			}
+
 			input[type = text]
 			{
+				/* Home page input field */
 				width: calc(100% - 0.5rem);
 				display: block;
 				max-width: 30rem;
@@ -178,7 +185,7 @@
 	</head>
 	<body>
 		<!-- Title -->
-		<h1>📥 GmodStore Downloader</h1>
+		<h1><a href="https://github.com/FlorianLeChat/GmodStore-Downloader" target="_blank">📥</a> GmodStore Downloader</h1>
 
 		<!-- Account details -->
 		<?php if (!empty($account)):  ?>
