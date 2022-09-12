@@ -164,13 +164,57 @@
 			$currency = $value["price"]["original"]["currency"];
 		}
 
-		echo("</ul>");
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		// Affichage de l'argent dépensé pour les scripts.
-		echo("<h3>Argent total dépensé : " . number_format($total / 100, 2, ",", " ") . " " . $currency . " !</h3>");
-	}
-	catch (Exception $error)
-	{
-		echo($error->getMessage()) . "<br />" . PHP_EOL;
-	}
-?>
+		<title>GmodStore Downloader</title>
+
+		<style>
+			input[type = text]
+			{
+				width: calc(100% - 0.5rem);
+				display: block;
+				max-width: 30rem;
+				margin-bottom: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Title -->
+		<h1>📥 GmodStore Downloader</h1>
+
+		<!-- Account details -->
+		<?php if (!empty($account)):  ?>
+			<h2>🔐 <?= $account ?></h2>
+		<?php endif; ?>
+
+		<?php if (!empty($addons)):  ?>
+			<!-- Addons list -->
+			<ul>
+				<?= $addons ?>
+			</ul>
+
+			<!-- Money spent -->
+			<h3>💰 <?= $money ?></h3>
+		<?php else: ?>
+			<!-- Authentication form -->
+			<p>Test</p>
+
+			<form method="GET">
+				<label for="token">Account authentication token :</label>
+				<input type="text" autoComplete="off" spellCheck="false" id="token" name="token" required />
+
+				<input type="submit" value="Connect" />
+			</form>
+		<?php endif; ?>
+
+		<!-- Error output -->
+		<?php if (!empty($output)):  ?>
+			<h3>⚠️ Error output ⚠️</h3>
+
+			<p><?= $output ?></p>
+		<?php endif; ?>
+	</body>
+</html>
