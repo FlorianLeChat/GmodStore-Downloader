@@ -46,6 +46,7 @@
 
 	if (!empty($token))
 	{
+		$output = "";
 		$config = \Everyday\GmodStore\Sdk\Configuration::getDefaultConfiguration()->setAccessToken($token);
 		$client = new \GuzzleHttp\Client();
 
