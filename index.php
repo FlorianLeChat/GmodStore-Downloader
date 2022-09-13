@@ -4,7 +4,11 @@
 	require_once(__DIR__ . "/vendor/autoload.php");
 
 	// Download an addon using its UUID.
+	$token = $_GET["token"] ?? "";
 	$download_id = $_GET["download"] ?? "";
+
+	$config = \Everyday\GmodStore\Sdk\Configuration::getDefaultConfiguration()->setAccessToken($token);
+	$client = new \GuzzleHttp\Client();
 
 	if (!empty($download_id))
 	{
@@ -42,15 +46,10 @@
 	}
 
 	// Display all purchased addons.
-	$token = $_GET["token"] ?? "";
-
 	if (!empty($token))
 	{
-		$output = "";
-		$config = \Everyday\GmodStore\Sdk\Configuration::getDefaultConfiguration()->setAccessToken($token);
-		$client = new \GuzzleHttp\Client();
-
 		// Login to user account.
+		$output = "";
 		$user_id = "";
 		$user_data = new \Everyday\GmodStore\Sdk\Api\UsersApi($client, $config);
 
