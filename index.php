@@ -25,12 +25,6 @@
 
 		try
 		{
-			// Récupération d'un lien de téléchargement unique.
-			//	Note : une modification dans code source est a réaliser pour que la fonction
-			//		retourne un résultat correcte, ligne 1005 de /vendor/everyday/gmodstore-sdk/lib/Api/ProductVersionsApi.php,
-			//		il est modifier de modifier la ligne par « json_decode($content, true) »,
-			//		la bibliothèque a été conçue pour la version 2 de l'API et mon script utilise
-			//		la dernière et troisième version d'où cette modification nécessaire.
 			$result = $download_product->getProductDownloadToken($download_id, $version_id);
 
 			header("Pragma: no-cache");
