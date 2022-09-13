@@ -11,6 +11,20 @@ Les jetons peuvent être générés à cette adresse : https://www.gmodstore.com
 * PHP **8.1+**
 * JavaScript (*ES6*)
 
+⚠️ Ce projet utilise le [GmodStore SDK pour PHP](https://github.com/everyday-as/gmodstore-php-sdk) afin d'interagir plus facilement avec l'API du site Internet. Cependant, ce SDK est uniquement applicable pour la **deuxième** version de l'API et non pas pour la **troisième**, même si tout fonctionne correctement, il est nécessaire de faire une modification *assez bête* dans les fichiers pour que le téléchargement des addons fonctionnent.
+
+* Installez les dépendances de Composer nécessaires avec `composer install`.
+* Rendez-vous dans le fichier `/vendor/everyday/gmodstore-sdk/lib/Api/ProductVersionsApi.php` à la ligne 1005.
+* Remplacez la ligne contenant le code suivant :
+```php
+ObjectSerializer::deserialize($content, '\Everyday\GmodStore\Sdk\Model\DownloadProductVersionResponse', []),
+```
+par
+```php
+json_decode($content, true),
+```
+* Enregistrez le fichier et c'est tout !
+
 *Ce site Internet n'est en aucun cas affilié à GmodStore, à l'exception du fait que nous utilisons leur formidable API pour vous fournir ce service.*
 
 ___
@@ -25,6 +39,20 @@ Tokens can be generated at this address: https://www.gmodstore.com/settings/pers
 * HTML **5** / CSS **3**
 * PHP **8.1+**
 * JavaScript (*ES6*)
+
+⚠️ This project uses the [GmodStore SDK for PHP](https://github.com/everyday-as/gmodstore-php-sdk) to interact more easily with the website API. However, this SDK is only applicable for the **second** version of the API and not for the **third**, even if everything works correctly, it is necessary to make a *pretty stupid* change in the files to make the addons download work.
+
+* Install the necessary Composer dependencies with `composer install`.
+* Go to `/vendor/everyday/gmodstore-sdk/lib/Api/ProductVersionsApi.php` at line 1005.
+* Replace the line containing the following code:
+```php
+ObjectSerializer::deserialize($content, '\EverydayGmodStoreSdk\Model\DownloadProductVersionResponse', []),
+```
+by
+```php
+json_decode($content, true),
+```
+* Save the file and that's it!
 
 *This website is in no way affiliated with GmodStore, except that we use their amazing API to provide you this service.*
 
