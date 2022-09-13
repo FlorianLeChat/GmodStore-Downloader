@@ -25,7 +25,7 @@ json_decode($content, true),
 ```
 * Enregistrez le fichier et c'est tout !
 
-*Ce site Internet n'est en aucun cas affilié à GmodStore, à l'exception du fait que nous utilisons leur formidable API pour vous fournir ce service.*
+*Ce site Internet n'est en aucun cas affilié à GmodStore, à l'exception du fait que j'utilise leur formidable API pour vous fournir ce service.*
 
 ___
 
@@ -46,7 +46,7 @@ Tokens can be generated at this address: https://www.gmodstore.com/settings/pers
 * Go to `/vendor/everyday/gmodstore-sdk/lib/Api/ProductVersionsApi.php` at line 1005.
 * Replace the line containing the following code:
 ```php
-ObjectSerializer::deserialize($content, '\EverydayGmodStoreSdk\Model\DownloadProductVersionResponse', []),
+ObjectSerializer::deserialize($content, '\Everyday\GmodStore\Sdk\Model\DownloadProductVersionResponse', []),
 ```
 by
 ```php
@@ -54,6 +54,6 @@ json_decode($content, true),
 ```
 * Save the file and that's it!
 
-*This website is in no way affiliated with GmodStore, except that we use their amazing API to provide you this service.*
+*This website is in no way affiliated with GmodStore, except that I use their amazing API to provide you this service.*
 
 ![image](https://user-images.githubusercontent.com/26360935/190854337-559ea766-dc34-4b49-b9bb-f3f69399f92d.png)
