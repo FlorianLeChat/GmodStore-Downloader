@@ -24,6 +24,8 @@ json_decode($content, true),
 ```
 * Enregistrez le fichier et c'est tout !
 
+**Une image Docker est disponible pour tester ce projet ! 🐳**
+
 *Ce site Internet n'est en aucun cas affilié à GmodStore, à l'exception du fait que j'utilise leur formidable API pour vous fournir ce service.*
 
 ___
@@ -51,6 +53,8 @@ by
 json_decode($content, true),
 ```
 * Save the file and that's it!
+
+**A Docker image is available to test this project! 🐳**
 
 *This website is in no way affiliated with GmodStore, except that I use their amazing API to provide you this service.*
 
