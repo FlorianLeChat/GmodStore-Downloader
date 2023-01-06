@@ -8,7 +8,7 @@ Les jetons peuvent être générés à cette adresse : https://www.gmodstore.com
 
 <ins>Voici les exigences pour exécuter le site Internet</ins> :
 * HTML **5** / CSS **3**
-* PHP **8.1+**
+* PHP **8.2+**
 
 ⚠️ Ce projet utilise le [GmodStore SDK pour PHP](https://github.com/everyday-as/gmodstore-php-sdk) afin d'interagir plus facilement avec l'API du site Internet. Cependant, ce SDK est uniquement applicable pour la **deuxième** version de l'API et non pas pour la **troisième**, même si tout fonctionne correctement, il est nécessaire de faire une modification *assez bête* dans les fichiers pour que le téléchargement des addons fonctionnent.
 
@@ -36,7 +36,7 @@ Tokens can be generated at this address: https://www.gmodstore.com/settings/pers
 
 <ins>Here are the requirements to run the website</ins>:
 * HTML **5** / CSS **3**
-* PHP **8.1+**
+* PHP **8.2+**
 
 ⚠️ This project uses the [GmodStore SDK for PHP](https://github.com/everyday-as/gmodstore-php-sdk) to interact more easily with the website API. However, this SDK is only applicable for the **second** version of the API and not for the **third** one, even if everything works correctly, it is necessary to make a *pretty stupid* change in the files to make the addons download work.
 
