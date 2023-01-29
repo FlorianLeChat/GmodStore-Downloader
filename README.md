@@ -37,7 +37,6 @@ This simple website provides the possibility to download addons from the [GmodSt
 Tokens can be generated at this address: https://www.gmodstore.com/settings/personal-access-tokens. They must have the following permissions: `products:read`, `product-versions:read`, `product-versions:download`, `users:read` and `user-purchases:read`. Once created, the site tells you what to do.
 
 <ins>Here are the requirements to run the website</ins>:
-* HTML **5** / CSS **3**
 * PHP **8.2+**
 
 ⚠️ This project uses the [GmodStore SDK for PHP](https://github.com/everyday-as/gmodstore-php-sdk) to interact more easily with the website API. However, this SDK is only applicable for the **second** version of the API and not for the **third** one, even if everything works correctly, it is necessary to make a *pretty stupid* change in the files to make the addons download work.
