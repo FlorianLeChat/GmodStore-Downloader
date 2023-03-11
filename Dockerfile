@@ -5,11 +5,19 @@
 ARG PHP_VERSION
 FROM webdevops/php-nginx:${PHP_VERSION}-alpine
 
-# Copy the website files to the container
-COPY ./ /app
+# Set the working directory to the website files
+WORKDIR /app
+
+# Copy only files required to install dependencies
+COPY composer*.json ./
+
+# Install all dependencies
+# Use cache mount to speed up installation of existing dependencies
+RUN --mount=type=cache,target=/app/.composer \
+	composer install
 
 # Apply a workaround to the GmodStore library
 RUN sed -i "s/ObjectSerializer::deserialize(\$content, '\Everyday\GmodStore\Sdk\Model\DownloadProductVersionResponse', \[])/json_decode(\$content, true)/g" /app/vendor/everyday/gmodstore-sdk/lib/Api/ProductVersionsApi.php
 
-# Install Composer and run it to install the dependencies
-RUN composer install -d /app
+# Copy the remaining files AFTER installing dependencies
+COPY . .
