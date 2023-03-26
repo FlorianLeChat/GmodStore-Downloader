@@ -160,7 +160,7 @@
 		<link rel="apple-touch-icon" href="assets/favicons/180x180.webp" />
 
 		<!-- CSS stylesheet -->
-		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="styles/styles.css" />
 	</head>
 	<body>
 		<!-- Animated GitHub repository icon -->
