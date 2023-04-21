@@ -1,5 +1,21 @@
 {
+    "name": "florianlechat/gmodstore-downloader",
+    "type": "project",
+    "homepage": "https://github.com/FlorianLeChat/GmodStore-Downloader",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Florian Trayon",
+            "homepage": "https://github.com/FlorianLeChat",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/FlorianLeChat/GmodStore-Downloader/issues"
+    },
+    "prefer-stable": true,
     "require": {
-        "everyday/gmodstore-sdk": "~3.1"
+        "php": ">=8.2",
+        "everyday/gmodstore-sdk": "3.1.*"
     }
 }
