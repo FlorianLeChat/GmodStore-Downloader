@@ -100,7 +100,8 @@
 		// Retrieving data from previously collected scripts.
 		$product_informations = new \Everyday\GmodStore\Sdk\Api\ProductsApi($client, $config);
 
-		try {
+		try
+		{
 			$result = $product_informations->getProducts($product_identifiers);
 			$result = $result["data"];
 
