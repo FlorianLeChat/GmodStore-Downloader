@@ -142,7 +142,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en" dir="auto">
+<html lang="en">
 	<head>
 		<!-- Document metadata -->
 		<meta charset="utf-8" />
