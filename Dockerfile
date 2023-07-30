@@ -3,7 +3,7 @@
 # Use an customized image of PHP 8.2 with Nginx
 # https://github.com/webdevops/Dockerfile/blob/master/docker/php-nginx/8.2-alpine/Dockerfile
 ARG PHP_VERSION
-FROM webdevops/php-nginx:${PHP_VERSION}-alpine
+FROM webdevops/php-nginx:8.2-alpine
 
 # Set the working directory to the website files
 WORKDIR /app
