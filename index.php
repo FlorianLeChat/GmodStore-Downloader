@@ -115,7 +115,7 @@
 					<li>
 						<b>' . $value["name"] . '</b>
 						<br />
-						<a href="' . $_SERVER["PHP_SELF"] . '?token=' . $token . '&download=' . $value["id"] . '">Download</a>
+						<a href="?token=' . $token . '&download=' . $value["id"] . '">Download</a>
 						—
 						<a href="https://www.gmodstore.com/market/view/' . $value["id"] . '" target="_blank">Store</a>
 					</li>'
