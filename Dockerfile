@@ -13,7 +13,7 @@ COPY composer*.json ./
 # Install all dependencies
 # Use cache mount to speed up installation of existing dependencies
 RUN --mount=type=cache,target=/app/.composer \
-	composer install
+	composer install --no-dev --optimize-autoloader
 
 # Apply a workaround to the GmodStore library
 RUN sed -i "s/ObjectSerializer::deserialize(\$content, '\Everyday\GmodStore\Sdk\Model\DownloadProductVersionResponse', \[])/json_decode(\$content, true)/g" /app/vendor/everyday/gmodstore-sdk/lib/Api/ProductVersionsApi.php
