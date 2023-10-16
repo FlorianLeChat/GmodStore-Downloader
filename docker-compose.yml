@@ -1,25 +1,31 @@
 version: "3.8"
 
 services:
-  # https://github.com/FlorianLeChat/GmodStore-Downloader
-  php-nginx:
-    image: ghcr.io/florianlechat/gmodstore-downloader:latest
-    restart: always
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      retries: 3
-      timeout: 5s
-    deploy:
-      resources:
-        limits:
-          cpus: "1"
-          memory: 128M
-        reservations:
-          cpus: "0.25"
-          memory: 32M
-      restart_policy:
-        window: 60s
-        condition: on-failure
-        max_attempts: 5
-    ports:
-      - 80:80
+    # https://github.com/FlorianLeChat/GmodStore-Downloader
+    php:
+        image: gmodstore-downloader
+        restart: always
+        healthcheck:
+            test: ["CMD", "curl", "-v", "http://localhost:9000", "2>&1", "|", "grep", "Empty reply from server", "||", "curl", "-f", "http://localhost"]
+            retries: 3
+            timeout: 5s
+        deploy:
+            resources:
+                limits:
+                    cpus: "1"
+                    memory: 128M
+                reservations:
+                    cpus: "0.25"
+                    memory: 32M
+            restart_policy:
+                window: 60s
+                condition: on-failure
+                max_attempts: 5
+        build:
+            args:
+                - VERSION
+                - MANAGER
+            context: .
+            dockerfile: ./Dockerfile
+        ports:
+            - 80:80
