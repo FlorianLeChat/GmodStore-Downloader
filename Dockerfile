@@ -10,7 +10,7 @@ ARG MANAGER=apt
 RUN if [ $MANAGER = "apt" ]; then \
         apt update && apt install git zip unzip libzip-dev -y; \
     else \
-		echo https://dl-4.alpinelinux.org/alpine/v3.18/community/ >> /etc/apk/repositories && \
+		echo https://dl-4.alpinelinux.org/alpine/latest-stable/community/ >> /etc/apk/repositories && \
 		apk update && \
         apk add --no-cache git zip unzip libzip-dev; \
     fi
