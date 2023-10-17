@@ -6,7 +6,7 @@ services:
         image: gmodstore-downloader
         restart: always
         healthcheck:
-            test: ["CMD", "curl", "-v", "http://localhost:9000", "2>&1", "|", "grep", "Empty reply from server", "||", "curl", "-f", "http://localhost"]
+            test: curl -f http://127.0.0.1:9000/ 2>&1 | grep "Connection reset by peer" || curl -f http://localhost
             retries: 3
             timeout: 5s
         deploy:
