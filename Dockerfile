@@ -27,8 +27,11 @@ RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 # Set the working directory to the website files
 WORKDIR /var/www/html
 
-# Copy only files required to install dependencies
-COPY --chown=www-data:www-data composer*.json ./
+# Copy all files to the working directory
+COPY --chown=www-data:www-data . .
+
+# Use the PHP custom configuration (if exists)
+RUN if [ -f "docker/php.ini" ]; then mv "docker/php.ini" "$PHP_INI_DIR/php.ini"; fi
 
 # Change current user to www-data
 USER www-data
@@ -40,9 +43,3 @@ RUN --mount=type=cache,target=.composer \
 
 # Apply a workaround to the GmodStore library
 RUN sed -i "s/ObjectSerializer::deserialize(\$content, '\Everyday\GmodStore\Sdk\Model\DownloadProductVersionResponse', \[])/json_decode(\$content, true)/g" vendor/everyday/gmodstore-sdk/lib/Api/ProductVersionsApi.php
-
-# Copy the remaining files AFTER installing dependencies
-COPY --chown=www-data:www-data . .
-
-# Use the PHP custom configuration (if exists)
-RUN if [ -f "docker/php.ini" ]; then mv "docker/php.ini" "$PHP_INI_DIR/php.ini"; fi
