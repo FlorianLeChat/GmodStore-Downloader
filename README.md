@@ -7,7 +7,7 @@ Ce petit site Internet permet le téléchargement d'addons en provenance du [Gmo
 Les jetons peuvent être générés à cette adresse : https://www.gmodstore.com/settings/personal-access-tokens. Ils doivent comporter les autorisations suivantes : `products:read`, `product-versions:read`, `product-versions:download`, `users:read` et `user-purchases:read`. Une fois créés, le site vous indique la démarche à suivre.
 
 <ins>Voici les exigences pour exécuter le site Internet</ins> :
-* PHP **8.2+**
+* [**Toute** version de PHP maintenue](https://www.php.net/supported-versions.php)
 
 ⚠️ Ce projet utilise le [GmodStore SDK pour PHP](https://github.com/everyday-as/gmodstore-php-sdk) afin d'interagir plus facilement avec l'API du site Internet. Cependant, ce SDK est uniquement applicable pour la **deuxième** version de l'API et non pas pour la **troisième**, même si tout fonctionne correctement, il est nécessaire de faire une modification *assez bête* dans les fichiers pour que le téléchargement des addons fonctionnent.
 
@@ -36,7 +36,7 @@ This simple website provides the possibility to download addons from the [GmodSt
 Tokens can be generated at this address: https://www.gmodstore.com/settings/personal-access-tokens. They must have the following permissions: `products:read`, `product-versions:read`, `product-versions:download`, `users:read` and `user-purchases:read`. Once created, the site tells you what to do.
 
 <ins>Here are the requirements to run the website</ins>:
-* PHP **8.2+**
+* [**Any** maintained PHP versions](https://www.php.net/supported-versions.php)
 
 ⚠️ This project uses the [GmodStore SDK for PHP](https://github.com/everyday-as/gmodstore-php-sdk) to interact more easily with the website API. However, this SDK is only applicable for the **second** version of the API and not for the **third** one, even if everything works correctly, it is necessary to make a *pretty stupid* change in the files to make the addons download work.
 
