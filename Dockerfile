@@ -5,18 +5,12 @@
 ARG VERSION=apache
 FROM php:${VERSION}
 
-# Install dependencies
-ARG VERSION
-RUN if [ $VERSION = "apache" ]; then \
-        apt update && apt install git zip unzip libzip-dev -y; \
-    else \
-		echo https://dl-4.alpinelinux.org/alpine/latest-stable/community/ >> /etc/apk/repositories && \
-		apk update && \
-        apk add --no-cache git zip unzip libzip-dev; \
-    fi
-
 # Install some PHP extensions
-RUN docker-php-ext-install zip
+RUN curl -sSLf \
+		-o /usr/local/bin/install-php-extensions \
+		https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions && \
+	chmod +x /usr/local/bin/install-php-extensions && \
+	install-php-extensions zip opcache
 
 # Install Composer for dependency management
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
