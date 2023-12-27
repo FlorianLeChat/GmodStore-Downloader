@@ -216,7 +216,7 @@
 		<?php if (!empty($output)):  ?>
 			<h3>⚠️ Error output ⚠️</h3>
 
-			<p><?= $output ?></p>
+			<output><?= $output ?></output>
 		<?php endif; ?>
 	</body>
 </html>
