@@ -7,7 +7,7 @@ Ce petit site Internet permet le téléchargement d'addons en provenance du [Gmo
 Les jetons peuvent être générés à cette adresse : https://www.gmodstore.com/settings/personal-access-tokens. Ils doivent comporter les autorisations suivantes : `products:read`, `product-versions:read`, `product-versions:download`, `users:read` et `user-purchases:read`. Une fois créés, le site vous indique la démarche à suivre.
 
 > [!TIP]
-> Pour essayer le projet, vous devez être en posession de [Docker](https://www.docker.com/). Une fois installé, il suffit de lancer l'image Docker de développement à l'aide de la commande `docker compose up --detach --build`. Le site devrait être accessible à l'adresse suivante : http://localhost/. 🐳
+> Pour tester le projet, vous devez être en posession de [Docker](https://www.docker.com/). Une fois installé, il suffit de lancer l'image Docker de développement à l'aide de la commande `docker compose up --detach --build`. Le site devrait être accessible à l'adresse suivante : http://localhost/. Si vous souhaitez travailler sur le projet avec Docker, vous devez utilisez la commande `docker compose watch --no-up` pour que vos changements locaux soient automatiquement synchronisés avec le conteneur. 🐳
 
 *Ce site Internet n'est en aucun cas affilié à GmodStore, à l'exception du fait que j'utilise leur formidable API pour vous fournir ce service.*
 
@@ -20,7 +20,7 @@ This simple website provides the possibility to download addons from the [GmodSt
 Tokens can be generated at this address: https://www.gmodstore.com/settings/personal-access-tokens. They must have the following permissions: `products:read`, `product-versions:read`, `product-versions:download`, `users:read` and `user-purchases:read`. Once created, the site tells you what to do.
 
 > [!TIP]
-> To try the project, you must have [Docker](https://www.docker.com/) installed. Once installed, simply start the development Docker image with `docker compose up --detach --build` command. The website should be available at http://localhost/. 🐳
+> To try the project, you must have [Docker](https://www.docker.com/) installed. Once installed, simply start the development Docker image with `docker compose up --detach --build` command. The website should be available at http://localhost/. If you want to work on the project with Docker, you need to use `docker compose watch --no-up` to automatically synchronize your local changes with the container. 🐳
 
 *This website is in no way affiliated with GmodStore, except that I use their amazing API to provide you this service.*
 
