@@ -1,7 +1,5 @@
 name: gmodstore-downloader
 
-version: "3.8"
-
 services:
     # https://github.com/FlorianLeChat/GmodStore-Downloader
     php:
