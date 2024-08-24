@@ -4,12 +4,6 @@
 # https://hub.docker.com/_/php
 FROM php:apache
 
-# Install some PHP extensions
-RUN curl -sSLf -o /usr/local/bin/install-php-extensions \
-		https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions && \
-	chmod +x /usr/local/bin/install-php-extensions && \
-	install-php-extensions zip opcache
-
 # Set the working directory to the website files
 WORKDIR /var/www/html
 
