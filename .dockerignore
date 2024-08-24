@@ -3,7 +3,6 @@
 .dockerignore
 .editorconfig
 .gitattributes
-vendor
 Dockerfile
 docker-*
 CODEOWNERS
