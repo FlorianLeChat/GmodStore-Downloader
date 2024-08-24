@@ -1,45 +1,74 @@
 <?php
-	require_once(__DIR__ . "/vendor/autoload.php");
-
 	// Download an addon using its UUID.
-	$token = $_GET["token"] ?? "";
-	$download_id = $_GET["download"] ?? "";
+	$token = htmlspecialchars($_GET["token"] ?? "", ENT_QUOTES, "UTF-8");
+	$downloadId = htmlspecialchars($_GET["download"] ?? "", ENT_QUOTES, "UTF-8");
 
-	$config = \Everyday\GmodStore\Sdk\Configuration::getDefaultConfiguration()->setAccessToken($token);
-	$client = new \GuzzleHttp\Client();
-
-	if (!empty($download_id))
+	if (!empty($downloadId))
 	{
-		$download_product = new \Everyday\GmodStore\Sdk\Api\ProductVersionsApi($client, $config);
+		$versionId = "";
+		$downloadUrl = "";
 
-		try
+		// Get the latest version of the product.
+		function getLatestProductVersion(): void
 		{
-			$result = $download_product->listProductVersions($download_id, 1);
-			$result = json_decode($result[0], true);
-			$result = $result["data"][0];
+			global $token, $output, $versionId, $downloadId;
 
-			$version_id = $result["id"];
+			$productVersion = file_get_contents("https://api.pivity.com/v3/products/$downloadId/versions", context: stream_context_create([
+				"http" => [
+					"header" => "Authorization: Bearer " . $token . "\r\nX-Tenant: gmodstore.com\r\n",
+					"ignore_errors" => true
+				]
+			]));
+
+			$productVersion = json_decode($productVersion, true);
+
+			if (empty($productVersion["data"]))
+			{
+				$output .= $productVersion["message"] . "<br />" . PHP_EOL;
+			}
+			else
+			{
+				$versionId = $productVersion["data"][0]["id"];
+			}
 		}
-		catch (Exception $error)
+
+		// Generate a download token for the product.
+		function getProductDownloadToken(): void
 		{
-			$output .= $error->getMessage() . "<br />" . PHP_EOL;
+			global $token, $output, $downloadId, $versionId, $downloadUrl;
+
+			$productDownload = file_get_contents("https://api.pivity.com/v3/products/$downloadId/versions/$versionId/download", context: stream_context_create([
+				"http" => [
+					"method" => "POST",
+					"header" => "Authorization: Bearer " . $token . "\r\nX-Tenant: gmodstore.com\r\n",
+					"ignore_errors" => true
+				]
+			]));
+
+			$productDownload = json_decode($productDownload, true);
+
+			if (empty($productDownload["data"]))
+			{
+				$output .= $productDownload["message"] . "<br />" . PHP_EOL;
+			}
+			else
+			{
+				$downloadUrl = $productDownload["data"]["url"];
+			}
 		}
 
-		try
-		{
-			$result = $download_product->getProductDownloadToken($download_id, $version_id);
+		getLatestProductVersion();
+		getProductDownloadToken();
 
+		if (!empty($versionId) && !empty($downloadUrl) && filter_var($downloadUrl, FILTER_VALIDATE_URL))
+		{
 			header("Pragma: no-cache");
 			header("Expires: 0");
-			header("Location: " . $result["data"]["url"]);
+			header("Location: " . $downloadUrl);
 			header("Cache-Control: no-store, no-cache, must-revalidate");
 			header("Cache-Control: post-check=0, pre-check=0", false);
 
 			exit();
-		}
-		catch (Exception $error)
-		{
-			$error .= $error->getMessage();
 		}
 	}
 
@@ -48,95 +77,134 @@
 	{
 		// Login to user account.
 		$output = "";
-		$user_id = "";
-		$user_data = new \Everyday\GmodStore\Sdk\Api\UsersApi($client, $config);
+		$userId = "";
+		$userData = file_get_contents("https://api.pivity.com/v3/me", context: stream_context_create([
+			"http" => [
+				"header" => "Authorization: Bearer " . $token . "\r\nX-Tenant: gmodstore.com\r\n",
+				"ignore_errors" => true
+			]
+		]));
 
-		try
+		$userData = json_decode($userData, true);
+
+		if (empty($userData["data"]["user"]))
 		{
-			$result = $user_data->getMe();
-			$result = $result["data"]["user"];
-
-			$user_id = $result["id"];
-			$account = $result["name"] . " (" . $result["steamId"] . ") [" . $user_id . "]";
+			// Authentication failed.
+			$output .= $userData["message"] . "<br />" . PHP_EOL;
 		}
-		catch (Exception $error)
+		else
 		{
-			$output .= $error->getMessage() . "<br />" . PHP_EOL;
+			// Authentication successful.
+			$userData = $userData["data"]["user"];
+
+			$userId = $userData["id"];
+			$account = $userData["name"] . " (" . $userData["steamId"] . ") [" . $userId . "]";
 		}
 
 		// Retrieving purchased scripts.
-		$user_purchases = new \Everyday\GmodStore\Sdk\Api\UserProductPurchasesApi($client, $config);
-		$product_identifiers = [];
+		$productIdentifiers = [];
 
-		function getProductIdentifiers(string $id, string $cursor = null)
+		function getProductIdentifiers(?string $cursor): void
 		{
-			global $user_purchases;
-			$result = $user_purchases->listUserPurchases($id, $cursor);
-			$result = json_decode($result[0], true);
+			// Make a first API call to get the first page of purchases.
+			global $userId, $token, $output, $productIdentifiers;
 
-			global $product_identifiers;
-			$product_identifiers = array_merge($product_identifiers, array_column($result["data"], "productId"));
+			$userPurchases = file_get_contents("https://api.pivity.com/v3/users/$userId/purchases?perPage=100&cursor=$cursor", context: stream_context_create([
+				"http" => [
+					"header" => "Authorization: Bearer " . $token . "\r\nX-Tenant: gmodstore.com\r\n",
+					"ignore_errors" => true
+				]
+			]));
 
-			// Checking all pages returned by the API.
-			$cursor = $result["cursors"]["next"];
+			$userPurchases = json_decode($userPurchases, true);
+
+			if (empty($userPurchases["data"]))
+			{
+				$output .= $userPurchases["message"] . "<br />" . PHP_EOL;
+			}
+			else
+			{
+				$productIdentifiers = array_merge($productIdentifiers, array_column($userPurchases["data"], "productId"));
+			}
+
+			// Checking all pages given by the API.
+			$cursor = $userPurchases["cursors"]["next"];
 
 			if (!empty($cursor))
 			{
-				getProductIdentifiers($id, $cursor);
+				getProductIdentifiers($cursor);
 			}
 		}
 
-		try
-		{
-			getProductIdentifiers($user_id);
-
-			$product_identifiers["ids[]"] = $product_identifiers;
-		}
-		catch (Exception $error)
-		{
-			$output .= $error->getMessage() . "<br />" . PHP_EOL;
-		}
+		getProductIdentifiers(null);
 
 		// Retrieving data from previously collected scripts.
-		$product_informations = new \Everyday\GmodStore\Sdk\Api\ProductsApi($client, $config);
+		$products = [];
 
-		try
+		function getProductDetails(): void
 		{
-			$result = $product_informations->getProducts($product_identifiers);
-			$result = $result["data"];
+			// Make a first API call to get the first page of scripts.
+			global $token, $output, $products, $productIdentifiers;
 
-			$total = 0;
-			$addons = "";
+			$parameters = http_build_query(["ids" => $productIdentifiers]);
+			$productDetails = file_get_contents("https://api.pivity.com/v3/products/batch?$parameters", context: stream_context_create([
+				"http" => [
+					"header" => "Authorization: Bearer " . $token . "\r\nX-Tenant: gmodstore.com\r\n",
+					"ignore_errors" => true
+				]
+			]));
 
-			foreach ($result as $value)
+			$productDetails = json_decode($productDetails, true);
+
+			if (empty($productDetails["data"]))
 			{
-				// Building the HTML structure.
-				$addons .= '
-					<li>
-						<b>' . $value["name"] . '</b>
-						<br />
-						<a href="?token=' . $token . '&download=' . $value["id"] . '">Download</a>
-						—
-						<a href="https://www.gmodstore.com/market/view/' . $value["id"] . '" target="_blank">Store</a>
-					</li>'
-				;
-
-				// Calculating the price of all addons.
-				$currency = $value["price"]["original"]["currency"];
-
-				if ($value["price"]["raw"] !== 99999)
-				{
-					$total += intval($value["price"]["original"]["amount"]);
-				}
+				$output .= $productDetails["message"] . "<br />" . PHP_EOL;
+			}
+			else
+			{
+				$products = array_merge($products, $productDetails["data"]);
 			}
 
-			// Displaying the total money spent.
-			$money = number_format($total / 100, 2, ",", " ") . " " . $currency;
+			// Checking all identifiers fetched previously.
+			// The API only allows 100 identifiers per request.
+			if (count($productIdentifiers) > 100)
+			{
+				$productIdentifiers = array_slice($productIdentifiers, 100);
+
+				getProductDetails();
+			}
 		}
-		catch (Exception $error)
+
+		getProductDetails();
+
+		// Calculating the total amount spent.
+		$total = 0;
+		$addons = "";
+
+		foreach ($products as $product)
 		{
-			$output .= $error->getMessage() . "<br />" . PHP_EOL;
+			// Building the HTML structure.
+			$addons .= '
+				<li>
+					<b>' . $product["name"] . '</b>
+					<br />
+					<a href="?token=' . $token . '&download=' . $product["id"] . '">Download</a>
+					—
+					<a href="https://www.gmodstore.com/market/view/' . $product["id"] . '" target="_blank">Store</a>
+				</li>'
+			;
+
+			// Calculating the price of all addons.
+			$currency = $product["price"]["original"]["currency"];
+
+			if ($product["price"]["raw"] !== 99999)
+			{
+				$total += intval($product["price"]["original"]["amount"]);
+			}
 		}
+
+		// Displaying the total money spent.
+		$money = number_format($total / 100, 2, ",", " ") . " " . $currency;
 	}
 ?>
 

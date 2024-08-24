@@ -7,9 +7,6 @@ FROM php:apache
 # Set the working directory to the website files
 WORKDIR /var/www/html
 
-# Install Composer for dependency management
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-
 # Copy all files to the working directory
 COPY --chown=www-data:www-data . .
 
@@ -21,10 +18,3 @@ RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini && \
 
 # Change current user to www-data
 USER www-data
-
-# Install all dependencies
-# Use cache mount to speed up installation of existing dependencies
-RUN --mount=type=cache,target=.composer composer install
-
-# Apply a workaround to the GmodStore library
-RUN sed -i "s/ObjectSerializer::deserialize(\$content, '\Everyday\GmodStore\Sdk\Model\DownloadProductVersionResponse', \[])/json_decode(\$content, true)/g" vendor/everyday/gmodstore-sdk/lib/Api/ProductVersionsApi.php
