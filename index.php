@@ -266,7 +266,7 @@
 				<a href="https://www.gmodstore.com/settings/personal-access-tokens" target="_blank">https://www.gmodstore.com/settings/personal-access-tokens</a><br />
 
 				The permissions to be granted when creating the token are:
-				<code>products:read</code>, <code>product-versions:read</code>, <code>product-versions:download</code>, <code>users:read</code> et <code>user-purchases:read</code>.<br />
+				<code>products:read</code>, <code>product-versions:read</code>, <code>product-versions:download</code>, <code>users:read</code> and <code>user-purchases:read</code>.<br />
 
 				Please note that the token will be displayed only once when it is created, so remember to save it somewhere safe!<br />
 
