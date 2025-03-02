@@ -1,0 +1,17 @@
+name: gmodstore-downloader
+
+services:
+    # https://github.com/FlorianLeChat/GmodStore-Downloader
+    php:
+        image: gmodstore-downloader
+        volumes:
+            - .:/var/www/html
+        healthcheck:
+            test: curl -f http://localhost
+            retries: 3
+            timeout: 5s
+        build:
+            context: .
+            dockerfile: ./docker/scripts/development/Dockerfile
+        ports:
+            - "80:80"
