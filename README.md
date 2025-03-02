@@ -17,10 +17,10 @@ Les jetons peuvent être générés à cette adresse : https://www.gmodstore.com
 - Utiliser un serveur Web pour servir les scripts PHP et les fichiers statiques.
 
 > [!TIP]
-> Pour tester le projet, vous *pouvez* également utiliser [Docker](https://www.docker.com/). Une fois installé, il suffit de lancer l'image Docker de développement à l'aide de la commande `docker compose up --detach --build`. Le site devrait être accessible à l'adresse suivante : http://localhost/. Si vous souhaitez travailler sur le projet avec Docker, vous devez utiliser la commande `docker compose watch --no-up` pour que vos changements locaux soient automatiquement synchronisés avec le conteneur. 🐳
+> Pour tester le projet, vous pouvez utiliser [Docker](https://www.docker.com/). Une fois installé, il suffit de lancer l'image Docker de développement à l'aide de la commande `docker compose -f compose.development.yml up --detach --build`. Le site devrait être accessible à l'adresse suivante : http://localhost/. 🐳
 
 > [!CAUTION]
-> L'image Docker *peut* également être déployée en production, mais cela **nécessite des connaissances approfondies pour déployer, optimiser et sécuriser correctement votre installation**, afin d'éviter toute conséquence indésirable. ⚠️
+> L'image Docker peut être déployée en production, mais cela **nécessite des connaissances approfondies pour déployer, optimiser et sécuriser correctement votre installation**, afin d'éviter toute conséquence indésirable. ⚠️
 
 *Ce site Internet n'est en aucun cas affilié à GmodStore, à l'exception du fait que j'utilise leur formidable API pour vous fournir ce service.*
 
@@ -41,10 +41,10 @@ Tokens can be generated at this address: https://www.gmodstore.com/settings/pers
 - Use a web server to serve PHP scripts and static files.
 
 > [!TIP]
-> To try the project, you *can* also use [Docker](https://www.docker.com/) installed. Once installed, simply start the development Docker image with `docker compose up --detach --build` command. The website should be available at http://localhost/. If you want to work on the project with Docker, you need to use `docker compose watch --no-up` to automatically synchronize your local changes with the container. 🐳
+> To try the project, you can use [Docker](https://www.docker.com/) installed. Once installed, simply start the development Docker image with `docker compose -f compose.development.yml up --detach --build` command. The website should be available at http://localhost/. 🐳
 
 > [!CAUTION]
-> The Docker image *can* also be deployed in production, but **this requires advanced knowledge to properly deploy, optimize, and secure your installation**, in order to avoid any unwanted consequences. ⚠️
+> The Docker image can be deployed in production, but **this requires advanced knowledge to properly deploy, optimize, and secure your installation**, in order to avoid any unwanted consequences. ⚠️
 
 *This website is in no way affiliated with GmodStore, except that I use their amazing API to provide you this service.*
 
