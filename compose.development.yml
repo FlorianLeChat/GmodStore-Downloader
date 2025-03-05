@@ -4,8 +4,11 @@ services:
     # https://github.com/FlorianLeChat/GmodStore-Downloader
     php:
         image: gmodstore-downloader
-        volumes:
-            - .:/var/www/html
+        develop:
+            watch:
+                - path: .
+                  action: sync
+                  target: /var/www/html
         healthcheck:
             test: curl -f http://localhost
             retries: 3
