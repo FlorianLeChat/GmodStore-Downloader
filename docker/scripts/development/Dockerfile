@@ -7,6 +7,9 @@ FROM php:apache
 # Set the working directory to the website files
 WORKDIR /var/www/html
 
+# Copy all files to the working directory
+COPY --chown=www-data:www-data . .
+
 # Use the default development PHP configuration
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
