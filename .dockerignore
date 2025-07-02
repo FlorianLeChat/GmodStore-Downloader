@@ -1,5 +1,6 @@
 **/.git*
-**/vendor
+**/dist
+**/node_modules
 **/*.md
 **/.dockerignore
 **/.editorconfig
