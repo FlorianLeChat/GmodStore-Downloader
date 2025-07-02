@@ -1,6 +1,7 @@
 <p>
-	A token can be generated at the following address
-	(<strong>account login required</strong>):
+	A token can be generated at the following address (<strong
+		>account login required</strong
+	>):
 	<a
 		rel="noopener noreferrer"
 		href="https://www.gmodstore.com/settings/personal-access-tokens"
@@ -35,6 +36,8 @@
 		required
 	/>
 
+	<input type="submit" value="Connect" />
+
 	<em>
 		Since July 2025, this website now runs entirely in your browser.
 		<br />
@@ -44,8 +47,6 @@
 		The legacy PHP version, which relied on an intermediate server,
 		<strong>is no longer available</strong>.
 	</em>
-
-	<input type="submit" value="Connect" />
 </form>
 
 <style>
@@ -61,6 +62,6 @@
 		/* Texte d'information */
 		display: block;
 		font-size: 0.9rem;
-		margin-bottom: 1rem;
+		margin-top: 1rem;
 	}
 </style>
