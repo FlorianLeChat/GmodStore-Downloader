@@ -1,0 +1,49 @@
+{
+  "name": "gmodstore-downloader",
+  "type": "module",
+  "author": "Florian Trayon (https://github.com/FlorianLeChat)",
+  "license": "MIT",
+  "private": true,
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FlorianLeChat/GmodStore-Downloader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FlorianLeChat/GmodStore-Downloader/issues"
+  },
+  "devDependencies": {
+    "@types/eslint-plugin-jsx-a11y": "~6.10",
+    "husky": "~9.1",
+    "eslint": "~9.30",
+    "svelte": "~5.34",
+    "globals": "~16.2",
+    "prettier": "~3.6",
+    "typescript": "~5.8",
+    "lint-staged": "~16.1",
+    "svelte-check": "~4.2",
+    "@tsconfig/svelte": "~5.0",
+    "typescript-eslint": "~8.35",
+    "eslint-plugin-svelte": "~3.10",
+    "prettier-plugin-svelte": "~3.4",
+    "@stylistic/eslint-plugin": "~5.1",
+    "@sveltejs/vite-plugin-svelte": "~5.1"
+  },
+  "engines": {
+    "node": ">=20.0",
+    "npm": ">=9.6"
+  },
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint . --fix --ext .js,.ts,.svelte",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "build": "vite build",
+    "pretty": "prettier --write \"**/*.{js,ts,svelte}\"",
+    "preview": "vite preview",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}
