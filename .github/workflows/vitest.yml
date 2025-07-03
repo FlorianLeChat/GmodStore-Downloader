@@ -1,0 +1,33 @@
+name: Vitest Tests
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 20, 22, 24 ]
+      fail-fast: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Set npm cache directory
+        id: npm-cache
+        run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+            key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
+            path: ${{ steps.npm-cache.outputs.dir }}
+            restore-keys: ${{ runner.os }}-npm-
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Vitest tests
+        run: npm run test

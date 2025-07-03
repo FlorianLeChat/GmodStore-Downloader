@@ -8,6 +8,9 @@ jobs:
   codeql:
     uses: ./.github/workflows/codeql.yml
 
+  vitest:
+    uses: ./.github/workflows/vitest.yml
+
   eslint:
     uses: ./.github/workflows/eslint.yml
 
