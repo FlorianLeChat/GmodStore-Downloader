@@ -1,7 +1,6 @@
 <p>
-	A token can be generated at the following address (<strong
-		>account login required</strong
-	>):
+	A token can be generated at the following address
+	(<strong>account login required</strong>):
 	<a
 		rel="noopener noreferrer"
 		href="https://www.gmodstore.com/settings/personal-access-tokens"

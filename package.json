@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "~6.10",
     "husky": "~9.1",
+    "vitest": "~3.2",
     "eslint": "~9.30",
     "svelte": "~5.35",
     "globals": "~16.3",
@@ -36,6 +37,7 @@
   "scripts": {
     "dev": "vite",
     "lint": "eslint . --fix --ext .js,.ts,.svelte",
+    "test": "vitest run",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "build": "vite build",
     "pretty": "prettier --write \"**/*.{js,ts,svelte}\"",
