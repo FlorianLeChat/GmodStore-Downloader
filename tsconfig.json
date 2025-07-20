@@ -1,6 +1,6 @@
 {
 	"exclude": ["node_modules"],
-	"include": ["*.config.*", "src/**/*.ts", "src/**/*.svelte"],
+	"include": ["*.config.*", "src/**/*.ts", "src/**/*.svelte", "tests/**/*.ts"],
 	"compilerOptions": {
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"noEmit": true,
