@@ -20,7 +20,7 @@
     "svelte": "~5.37",
     "globals": "~16.3",
     "prettier": "~3.6",
-    "typescript": "~5.9",
+    "typescript": "~5.8",
     "lint-staged": "~16.1",
     "svelte-check": "~4.3",
     "@tsconfig/svelte": "~5.0",
