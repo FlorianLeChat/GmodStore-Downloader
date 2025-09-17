@@ -4,14 +4,15 @@ on:
   workflow_call:
   workflow_dispatch:
 
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
 jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
     strategy:
       matrix:
         language: [ javascript-typescript, actions ]
