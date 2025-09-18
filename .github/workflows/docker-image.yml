@@ -21,7 +21,6 @@ jobs:
     uses: ./.github/workflows/eslint.yml
 
   build-image:
-    if: ${{ github.event_name != 'schedule' }}}
     runs-on: ubuntu-latest
     needs: [ codeql, eslint ]
     steps:
