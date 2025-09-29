@@ -2,7 +2,7 @@
 
 # Use an customized image of Node.js
 # https://hub.docker.com/_/node
-FROM node:lts-alpine
+FROM node:24-alpine
 
 # Set the working directory to the website files
 WORKDIR /usr/src/app
