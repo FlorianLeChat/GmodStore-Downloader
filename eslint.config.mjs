@@ -4,8 +4,9 @@ import globals from "globals";
 import stylistic from "@stylistic/eslint-plugin";
 import sveltelint from "eslint-plugin-svelte";
 import svelteConfig from "./svelte.config.js";
+import { defineConfig } from "eslint/config";
 
-export default tslint.config(
+export default defineConfig(
 	{
 		ignores: [ "**/vite-env.d.ts", "dist/**" ]
 	},
