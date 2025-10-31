@@ -80,7 +80,7 @@ Previously, this project was developed in [PHP](https://www.php.net/) 🐘 (avai
 - Install [NodeJS LTS](https://nodejs.org/) (>20 or higher) ;
 - Install project dependencies using `npm install` ;
 - Build static website files using `npm run build` ;
-- Remove development dependencies using `npm prune --production` ;
+- Remove development dependencies using `npm prune --omit=dev` ;
 - Use a web server to serve the static files generated in the previous step.
 
 > [!TIP]
