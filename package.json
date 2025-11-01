@@ -16,7 +16,7 @@
     "@types/eslint-plugin-jsx-a11y": "~6.10",
     "husky": "~9.1",
     "vitest": "~4.0",
-    "eslint": "~9.39",
+    "eslint": "~9.36",
     "svelte": "~5.43",
     "globals": "~16.5",
     "prettier": "~3.6",
