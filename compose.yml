@@ -14,7 +14,7 @@ services:
                 - path: package-lock.json
                   action: rebuild
         healthcheck:
-            test: wget -O - http://127.0.0.1:5173
+            test: wget -O - http://127.0.0.1:5173/
             retries: 3
             timeout: 5s
         build:
