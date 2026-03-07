@@ -1,16 +1,15 @@
 # 📥 GmodStore Downloader
 
-![HTML](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-639?logo=css&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![HTML](./.gitlab/badges/html.svg)
+![CSS](./.gitlab/badges/css.svg)
+![TypeScript](./.gitlab/badges/typescript.svg)
 
-![Svelte](https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=black)
-![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)
+![Svelte](./.gitlab/badges/svelte.svg)
+![TailwindCSS](./.gitlab/badges/tailwindcss.svg)
+![Vite](./.gitlab/badges/vite.svg)
+![Vitest](./.gitlab/badges/vitest.svg)
+![Prettier](./.gitlab/badges/prettier.svg)
+![ESLint](./.gitlab/badges/eslint.svg)
 
 ## In French
 
@@ -91,4 +90,4 @@ Previously, this project was developed in [PHP](https://www.php.net/) 🐘 (avai
 
 *This website is in no way affiliated with GmodStore, except that I use their amazing API to provide you this service.*
 
-![image](https://user-images.githubusercontent.com/26360935/190854337-559ea766-dc34-4b49-b9bb-f3f69399f92d.png)
+![image](./.gitlab/images/gmodstore-downloader.png)
