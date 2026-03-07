@@ -46,6 +46,14 @@
 		The legacy PHP version, which relied on an intermediate server,
 		<strong>is no longer available</strong>.
 	</em>
+
+	<em>
+		Since March 2026, this website has been moved to my personal GitLab instance.
+		<br />
+		GitLab Pages is used and provides the <strong>same privacy guarantees as before</strong>.
+		<br />
+		The server is now located in France; therefore, the website falls under the GDPR.
+	</em>
 </form>
 
 <style>
