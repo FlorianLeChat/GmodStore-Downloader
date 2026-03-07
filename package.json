@@ -1,51 +1,54 @@
 {
-  "name": "gmodstore-downloader",
-  "type": "module",
-  "author": "Florian Trayon (https://github.com/FlorianLeChat)",
-  "license": "MIT",
-  "private": true,
-  "version": "1.0.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/FlorianLeChat/GmodStore-Downloader.git"
-  },
-  "bugs": {
-    "url": "https://github.com/FlorianLeChat/GmodStore-Downloader/issues"
-  },
-  "devDependencies": {
-    "@types/eslint-plugin-jsx-a11y": "~6.10",
-    "husky": "~9.1",
-    "vitest": "~4.0",
-    "eslint": "~10.0",
-    "svelte": "~5.53",
-    "globals": "~17.4",
-    "prettier": "~3.8",
-    "typescript": "~5.9",
-    "lint-staged": "~16.3",
-    "svelte-check": "~4.4",
-    "@tsconfig/svelte": "~5.0",
-    "typescript-eslint": "~8.56",
-    "eslint-plugin-svelte": "~3.15",
-    "prettier-plugin-svelte": "~3.5",
-    "@stylistic/eslint-plugin": "~5.9",
-    "@sveltejs/vite-plugin-svelte": "~6.2"
-  },
-  "engines": {
-    "node": ">=20.0",
-    "npm": ">=9.6"
-  },
-  "scripts": {
-    "dev": "vite",
-    "lint": "eslint . --fix --ext .js,.ts,.svelte",
-    "test": "vitest run",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "build": "vite build",
-    "pretty": "prettier --write \"**/*.{js,ts,svelte}\"",
-    "preview": "vite preview",
-    "prepare": "husky",
-    "lint-staged": "lint-staged"
-  },
-  "browserslist": [
-    "defaults"
-  ]
+	"name": "gmodstore-downloader",
+	"type": "module",
+	"author": "Florian Trayon (https://github.com/FlorianLeChat)",
+	"license": "MIT",
+	"private": true,
+	"version": "1.0.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/FlorianLeChat/GmodStore-Downloader.git"
+	},
+	"bugs": {
+		"url": "https://github.com/FlorianLeChat/GmodStore-Downloader/issues"
+	},
+	"devDependencies": {
+		"@types/eslint-plugin-jsx-a11y": "~6.10",
+		"husky": "~9.1",
+		"vitest": "~4.0",
+		"eslint": "~10.0",
+		"svelte": "~5.53",
+		"globals": "~17.4",
+		"prettier": "~3.8",
+		"typescript": "~5.9",
+		"lint-staged": "~16.3",
+		"svelte-check": "~4.4",
+		"@commitlint/cli": "~20.4",
+		"@tsconfig/svelte": "~5.0",
+		"typescript-eslint": "~8.56",
+		"eslint-plugin-svelte": "~3.15",
+		"prettier-plugin-svelte": "~3.5",
+		"@stylistic/eslint-plugin": "~5.9",
+		"@sveltejs/vite-plugin-svelte": "~6.2",
+		"@commitlint/config-conventional": "~20.4"
+	},
+	"engines": {
+		"node": ">=20.0",
+		"npm": ">=9.6"
+	},
+	"scripts": {
+		"dev": "vite",
+		"lint": "eslint . --fix --ext .js,.ts,.svelte",
+		"test": "vitest run",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"build": "vite build",
+		"pretty": "prettier --write \"**/*.{js,ts,svelte}\"",
+		"preview": "vite preview",
+		"prepare": "husky",
+		"commitlint": "commitlint --edit",
+		"lint-staged": "lint-staged"
+	},
+	"browserslist": [
+		"defaults"
+	]
 }
