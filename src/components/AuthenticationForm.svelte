@@ -50,7 +50,6 @@
 
 <style>
 	input[type="text"] {
-		/* Champ de saisie pour le jeton */
 		width: calc(100% - 0.5rem);
 		display: block;
 		max-width: 30rem;
@@ -58,7 +57,6 @@
 	}
 
 	em {
-		/* Texte d'information */
 		display: block;
 		font-size: 0.9rem;
 		margin-top: 1rem;

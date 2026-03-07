@@ -1,5 +1,4 @@
 <script lang="ts">
-	// Importation des dépendances et composants.
 	import { onMount } from "svelte";
 	import GitHubCorner from "./components/GitHubCorner.svelte";
 	import AccountDetails from "./components/AccountDetails.svelte";
@@ -11,14 +10,12 @@
 	import type { UserProperties } from "./interfaces/UserProperties";
 	import type { ProductProperties } from "./interfaces/ProductProperties";
 
-	// Initialisation des variables.
 	let token = $state( "" );
 	let userData: UserProperties | undefined = $state();
 	let products: ProductProperties[] = $state( [] );
 	let exception = $state( "" );
 	let isLoading = $state( false );
 
-	// Récupération des données du compte utilisateur depuis l'API de GmodStore.
 	const fetchAccountData = async () =>
 	{
 		isLoading = true;
@@ -29,7 +26,6 @@
 		);
 	};
 
-	// Opérations de récupération des données à l'ouverture de la page.
 	onMount( async () =>
 	{
 		const parameters = new URLSearchParams( window.location.search );
@@ -71,27 +67,20 @@
 	} );
 </script>
 
-<!-- Conteneur général -->
 <main>
-	<!-- Logo GitHub -->
 	<GitHubCorner />
 
-	<!-- Titre -->
 	<h1>📥 GmodStore Downloader</h1>
 
 	{#if isLoading}
-		<!-- Affichage d'un message de chargement -->
 		<i>Please wait, fetching data...</i>
 	{:else if token && userData && products}
-		<!-- Affichage des détails du compte utilisateur -->
 		<AccountDetails {token} {userData} {products} />
 	{:else}
-		<!-- Formulaire d'authentification -->
 		<AuthenticationForm />
 	{/if}
 
 	{#if exception}
-		<!-- Affichage des erreurs -->
 		<h3>⚠️ Error output ⚠️</h3>
 
 		<output>{exception}</output>

@@ -1,12 +1,9 @@
 import type { UserProperties } from "../interfaces/UserProperties";
 import type { ProductProperties } from "../interfaces/ProductProperties";
 
-//
-// Récupère les informations d'un compte utilisateur GmodStore.
-//  Source : https://docs.pivity.com/#tag/Users/operation/getMe
-//
 export const fetchUserData = async ( token: string ) =>
 {
+	// https://docs.pivity.com/#tag/Users/operation/getMe
 	const response = await fetch( "https://api.pivity.com/v3/me", {
 		headers: {
 			"X-Tenant": "gmodstore.com",
@@ -24,16 +21,13 @@ export const fetchUserData = async ( token: string ) =>
 	return json.data.user as UserProperties;
 };
 
-//
-// Récupère tous les produits achetés par l'utilisateur.
-//  Source : https://docs.pivity.com/#tag/User-Product-Purchases/operation/listUserPurchases
-//
 export const fetchAllPurchases = async (
 	token: string,
 	userId: string,
 	cursor?: string
 ) =>
 {
+	// https://docs.pivity.com/#tag/User-Product-Purchases/operation/listUserPurchases
 	const response = await fetch(
 		`https://api.pivity.com/v3/users/${ userId }/purchases?perPage=100&cursor=${ cursor }`,
 		{
@@ -69,15 +63,12 @@ export const fetchAllPurchases = async (
 	return purchases;
 };
 
-//
-// Récupère les informations de tous les produits achetés par l'utilisateur.
-//  Source : https://docs.pivity.com/#tag/Products/operation/getProducts
-//
 export const fetchAllProducts = async ( token: string, purchases: string[] ) =>
 {
 	const parameters = new URLSearchParams();
 	purchases.forEach( ( purchase ) => parameters.append( "ids[]", purchase ) );
 
+	// https://docs.pivity.com/#tag/Products/operation/getProducts
 	const response = await fetch(
 		`https://api.pivity.com/v3/products/batch?${ parameters }`,
 		{
@@ -99,7 +90,7 @@ export const fetchAllProducts = async ( token: string, purchases: string[] ) =>
 
 	if ( products && purchases.length > 100 )
 	{
-		// L'API ne permet pas de récupérer plus de 100 produits à la fois.
+		// The API does not allow fetching more than 100 products at once.
 		const nextPurchases = purchases.splice( 0, 100 );
 		const nextProducts = await fetchAllProducts( token, nextPurchases );
 
@@ -109,15 +100,12 @@ export const fetchAllProducts = async ( token: string, purchases: string[] ) =>
 	return products;
 };
 
-//
-// Récupère les informations de la dernière version d'un produit spécifique.
-//  Source : https://docs.pivity.com/#tag/Product-Versions/operation/listProductVersions
-//
 export const fetchProductLatestVersion = async (
 	token: string,
 	productId: string
 ) =>
 {
+	// https://docs.pivity.com/#tag/Product-Versions/operation/listProductVersions
 	const response = await fetch(
 		`https://api.pivity.com/v3/products/${ productId }/versions`,
 		{
@@ -138,16 +126,13 @@ export const fetchProductLatestVersion = async (
 	return json.data[ 0 ].id as string;
 };
 
-//
-// Télécharge un produit spécifique à partir de son identifiant et de sa version.
-//  Source : https://docs.pivity.com/#tag/Product-Versions/operation/getProductDownloadUrl
-//
 export const fetchProductDownloadUrl = async (
 	token: string,
 	productId: string,
 	versionId: string
 ) =>
 {
+	// https://docs.pivity.com/#tag/Product-Versions/operation/getProductDownloadUrl
 	const response = await fetch(
 		`https://api.pivity.com/v3/products/${ productId }/versions/${ versionId }/download`,
 		{

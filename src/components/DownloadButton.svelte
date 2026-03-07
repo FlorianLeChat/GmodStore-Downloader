@@ -1,9 +1,7 @@
 <script lang="ts">
-	// Importation des dépendances et composants.
 	import { downloadProduct } from "../utilities/download";
 	import type { ProductProperties } from "../interfaces/ProductProperties";
 
-	// Initialisation des variables.
 	let {
 		token,
 		product
