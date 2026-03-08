@@ -1,15 +1,15 @@
 # 📥 GmodStore Downloader
 
-![HTML](./.gitlab/badges/html.svg)
-![CSS](./.gitlab/badges/css.svg)
-![TypeScript](./.gitlab/badges/typescript.svg)
+![HTML](.gitlab/badges/html.svg)
+![CSS](.gitlab/badges/css.svg)
+![TypeScript](.gitlab/badges/typescript.svg)
 
-![Svelte](./.gitlab/badges/svelte.svg)
-![TailwindCSS](./.gitlab/badges/tailwindcss.svg)
-![Vite](./.gitlab/badges/vite.svg)
-![Vitest](./.gitlab/badges/vitest.svg)
-![Prettier](./.gitlab/badges/prettier.svg)
-![ESLint](./.gitlab/badges/eslint.svg)
+![Svelte](.gitlab/badges/svelte.svg)
+![TailwindCSS](.gitlab/badges/tailwindcss.svg)
+![Vite](.gitlab/badges/vite.svg)
+![Vitest](.gitlab/badges/vitest.svg)
+![Prettier](.gitlab/badges/prettier.svg)
+![ESLint](.gitlab/badges/eslint.svg)
 
 ## In French
 
@@ -52,7 +52,7 @@ Auparavant, ce projet était développé en [PHP](https://www.php.net/) 🐘 (di
 ## In English
 
 > [!IMPORTANT]
-> Since March 2026, the project's code has been hosted on my custom GitLab instance, accessible at [this address](https://git.florian-dev.fr/floriantrayon/GmodStore-Downloader). The GitHub repository is a mirror of the GitLab repository, **automatically kept up to date**.
+> Since March 2026, the project's code has been hosted on my custom GitLab instance, available at [this address](https://git.florian-dev.fr/floriantrayon/GmodStore-Downloader). The GitHub repository is a mirror of the GitLab repository, **automatically kept up to date**.
 >
 > **Public contributions remain on GitHub and are welcome**; validated pull requests will then be manually transferred to GitLab to be integrated. 🙂
 
@@ -88,4 +88,4 @@ Previously, this project was developed in [PHP](https://www.php.net/) 🐘 (avai
 
 *This website is in no way affiliated with GmodStore, except that I use their amazing API to provide you this service.*
 
-![image](./.gitlab/images/gmodstore-downloader.png)
+![image](.gitlab/images/gmodstore-downloader.png)
