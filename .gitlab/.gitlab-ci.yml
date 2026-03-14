@@ -1,5 +1,6 @@
 stages:
     - lint
+    - test
     - build
     - deploy
 
@@ -15,14 +16,25 @@ before_script:
     - npm ci --cache .npm --prefer-offline
 
 lint:eslint:
-    image: node:20-alpine
     stage: lint
+    image: node:20-alpine
     script:
         - npm run lint
     artifacts:
         when: always
         reports:
             codequality: gl-codequality.json
+        expire_in: 1 hour
+
+test:vitest:
+    stage: test
+    image: node:20-alpine
+    script:
+        - npm run test
+    artifacts:
+        when: always
+        reports:
+            junit: vitest.xml
         expire_in: 1 hour
 
 build:node:
