@@ -1,24 +1,18 @@
 stages:
-    - cache
     - lint
     - build
     - deploy
 
-cache:npm:
-    image: node:20-alpine
-    stage: cache
-    cache:
-        key:
-            files:
-                - package-lock.json
-        paths:
-            - .npm
-    script:
-        - npm ci
-    artifacts:
-        paths:
-            - node_modules
-        expire_in: 1 hour
+cache:
+    key:
+        files:
+            - package-lock.json
+    paths:
+        - .npm
+    policy: pull-push
+
+before_script:
+    - npm ci --cache .npm --prefer-offline
 
 lint:eslint:
     image: node:20-alpine
@@ -40,8 +34,7 @@ build:node:
         paths:
             - dist/
         expire_in: 1 hour
-    dependencies:
-        - cache:npm
+    dependencies: []
 
 deploy:pages:
     stage: deploy
@@ -53,11 +46,11 @@ deploy:pages:
           when: manual
     pages:
         publish: dist
+    before_script: []
     script:
         - echo 'Deploy to GitLab Pages'
     artifacts:
         expire_in: 1 hour
     dependencies:
-        - cache:npm
         - build:node
     allow_failure: false
