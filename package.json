@@ -39,7 +39,7 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"lint": "eslint . --format gitlab --ext .js,.ts,.svelte",
+		"lint": "eslint . --fix --format gitlab --ext .js,.ts,.svelte",
 		"test": "vitest run --reporter=default --reporter=junit --outputFile=vitest.xml",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"build": "vite build",
