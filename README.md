@@ -26,9 +26,6 @@ Les jetons peuvent être générés à cette adresse : https://www.gmodstore.com
 
 Auparavant, ce projet était développé en [PHP](https://www.php.net/) 🐘 (disponible via la branche `no-svelte`), car l'API GmodStore avait restreint les [en-têtes CORS](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/CORS), empêchant toute communication directe depuis un navigateur. Depuis, cette restriction a été levée, ce qui permet désormais d'utiliser le *framework* [Svelte](https://svelte.dev/) 🔥 pour interagir **directement** avec leur API. Cette migration a supprimé la nécessité d'un serveur intermédiaire, améliorant ainsi la confidentialité des données en exécutant l'**intégralité** du site Internet côté client, tout en optimisant ses performances.
 
-> [!NOTE]
-> Tout ou partie du code peut contenir des commentaires dans ma langue natale (le français) afin de faciliter le développement. 🌐
-
 ### Installation
 
 > [!WARNING]
@@ -63,9 +60,6 @@ This small website lets you download addons from the [GmodStore](https://www.gmo
 Tokens can be generated at this address: https://www.gmodstore.com/settings/personal-access-tokens. They must have the following permissions: `products:read`, `product-versions:read`, `product-versions:download`, `users:read` and `user-purchases:read`. Once created, the website tells you what to do.
 
 Previously, this project was developed in [PHP](https://www.php.net/) 🐘 (available through the `no-svelte` branch), because the GmodStore API restricted [CORS headers](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/CORS), preventing direct communication from a browser. This restriction has since been removed, allowing usage of [Svelte](https://svelte.dev/) 🔥 framework to communicate **directly** with their API. This migration has eliminated need for an intermediary server, improving data privacy by running the **entire** website client-side, while optimizing its performance.
-
-> [!NOTE]
-> All or part of the code may contain comments in my native language (French) to ease development. 🌐
 
 ### Setup
 

@@ -32,7 +32,6 @@ export default defineConfig(
             }
         },
         rules: {
-            // Règles de base
             "no-shadow": "off",
             "camelcase": [
                 "error",
@@ -50,7 +49,6 @@ export default defineConfig(
                 }
             ],
 
-            // Règles de style
             "@stylistic/semi": [ "error", "always" ],
             "@stylistic/indent": [ "error", 4 ],
             "@stylistic/quotes": [ "error", "double" ],

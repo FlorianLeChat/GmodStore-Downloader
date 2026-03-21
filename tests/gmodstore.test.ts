@@ -1,6 +1,3 @@
-//
-// Tests unitaires concernant les appels à l'API de GmodStore.
-//
 import { fetchUserData,
     fetchAllPurchases,
     fetchAllProducts,
