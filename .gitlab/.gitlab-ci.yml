@@ -4,16 +4,16 @@ stages:
     - build
     - deploy
 
-cache:
-    key:
-        files:
-            - package-lock.json
-    paths:
-        - .npm
-    policy: pull-push
-
-before_script:
-    - npm ci --cache .npm --prefer-offline
+default:
+    cache:
+        key:
+            files:
+                - package-lock.json
+        paths:
+            - .npm
+        policy: pull-push
+    before_script:
+        - npm ci --cache .npm --prefer-offline
 
 lint:eslint:
     stage: lint
