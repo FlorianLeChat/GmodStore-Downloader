@@ -1,5 +1,2 @@
-# Auto detect text files and perform LF normalization
-* text=auto
-
-# Ignore test files in language stats
+* text=auto eol=lf
 *.test.ts linguist-detectable=false
