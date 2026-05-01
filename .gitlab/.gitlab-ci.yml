@@ -30,6 +30,8 @@ lint:eslint:
 test:vitest:
     stage: test
     image: node:20-alpine
+    before_script:
+        - npm ci --cache .npm --prefer-offline
     script:
         - npm run test
     artifacts:
