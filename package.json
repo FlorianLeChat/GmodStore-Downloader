@@ -34,8 +34,8 @@
         "@commitlint/config-conventional": "~20.4"
     },
     "engines": {
-        "node": ">=20.0",
-        "npm": ">=9.6"
+        "node": ">=22.0",
+        "npm": ">=10.5"
     },
     "scripts": {
         "dev": "vite",
