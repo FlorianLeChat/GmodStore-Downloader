@@ -1,4 +1,4 @@
-import { svelte } from "@sveltejs/vite-plugin-svelte";
+import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig( {
@@ -12,5 +12,5 @@ export default defineConfig( {
             }
         ]
     },
-    plugins: [ svelte() ]
+    plugins: [ sveltekit() ]
 } );

@@ -1,5 +1,5 @@
 // https://docs.pivity.com/#tag/Products/operation/getProduct
-export interface ProductProperties {
+export interface Product {
     id: string;
     productId: string;
     name: string;

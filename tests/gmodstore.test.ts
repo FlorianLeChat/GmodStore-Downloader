@@ -2,7 +2,7 @@ import { fetchUserData,
     fetchAllPurchases,
     fetchAllProducts,
     fetchProductDownloadUrl,
-    fetchProductLatestVersion } from "../src/utilities/gmodstore";
+    fetchProductLatestVersion } from "$lib/utilities/gmodstore";
 import { describe, it, expect, vi, beforeEach, type Mock } from "vitest";
 
 beforeEach( () =>
@@ -41,9 +41,7 @@ describe( "Récupération des informations du compte utilisateur", () =>
             json: () => Promise.resolve( { message: "Unauthorized" } )
         } );
 
-        await expect( fetchUserData( "bad-token" ) ).rejects.toThrow(
-            "Unauthorized"
-        );
+        await expect( fetchUserData( "bad-token" ) ).rejects.toThrow( "Unauthorized" );
     } );
 } );
 
@@ -86,9 +84,7 @@ describe( "Récupération des produits achetés par l'utilisateur", () =>
                 } )
         };
 
-        ( fetch as Mock )
-            .mockResolvedValueOnce( firstPage )
-            .mockResolvedValueOnce( secondPage );
+        ( fetch as Mock ).mockResolvedValueOnce( firstPage ).mockResolvedValueOnce( secondPage );
 
         const purchases = await fetchAllPurchases( "token", "userId" );
         expect( purchases ).toEqual( [ "prod1", "prod2" ] );
@@ -99,13 +95,10 @@ describe( "Récupération des produits achetés par l'utilisateur", () =>
     {
         ( fetch as Mock ).mockResolvedValue( {
             ok: false,
-            json: () =>
-                Promise.resolve( { message: "Error fetching purchases" } )
+            json: () => Promise.resolve( { message: "Error fetching purchases" } )
         } );
 
-        await expect( fetchAllPurchases( "token", "userId" ) ).rejects.toThrow(
-            "Error fetching purchases"
-        );
+        await expect( fetchAllPurchases( "token", "userId" ) ).rejects.toThrow( "Error fetching purchases" );
     } );
 } );
 
@@ -130,9 +123,7 @@ describe( "Récupération de la liste des produits de l'utilisateur", () =>
             json: () => Promise.resolve( { message: "Error fetching products" } )
         } );
 
-        await expect( fetchAllProducts( "token", [ "prod1" ] ) ).rejects.toThrow(
-            "Error fetching products"
-        );
+        await expect( fetchAllProducts( "token", [ "prod1" ] ) ).rejects.toThrow( "Error fetching products" );
     } );
 } );
 
@@ -153,13 +144,10 @@ describe( "Récupération de la dernière version d'un produit", () =>
     {
         ( fetch as Mock ).mockResolvedValue( {
             ok: false,
-            json: () =>
-                Promise.resolve( { message: "Error fetching latest version" } )
+            json: () => Promise.resolve( { message: "Error fetching latest version" } )
         } );
 
-        await expect(
-            fetchProductLatestVersion( "token", "productId" )
-        ).rejects.toThrow( "Error fetching latest version" );
+        await expect( fetchProductLatestVersion( "token", "productId" ) ).rejects.toThrow( "Error fetching latest version" );
     } );
 } );
 
@@ -175,11 +163,7 @@ describe( "Récupération du lien de téléchargement d'un produit", () =>
                 } )
         } );
 
-        const url = await fetchProductDownloadUrl(
-            "token",
-            "productId",
-            "versionId"
-        );
+        const url = await fetchProductDownloadUrl( "token", "productId", "versionId" );
         expect( url ).toBe( "https://download.url/file.zip" );
     } );
 
@@ -187,12 +171,11 @@ describe( "Récupération du lien de téléchargement d'un produit", () =>
     {
         ( fetch as Mock ).mockResolvedValue( {
             ok: false,
-            json: () =>
-                Promise.resolve( { message: "Error downloading product" } )
+            json: () => Promise.resolve( { message: "Error downloading product" } )
         } );
 
-        await expect(
-            fetchProductDownloadUrl( "token", "productId", "versionId" )
-        ).rejects.toThrow( "Error downloading product" );
+        await expect( fetchProductDownloadUrl( "token", "productId", "versionId" ) ).rejects.toThrow(
+            "Error downloading product"
+        );
     } );
 } );

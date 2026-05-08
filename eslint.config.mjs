@@ -8,7 +8,7 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig(
     {
-        ignores: [ "**/vite-env.d.ts", "dist/**" ]
+        ignores: [ "**/app.d.ts", ".svelte-kit/**", "build/**" ]
     },
     eslint.configs.recommended,
     tslint.configs.strict,

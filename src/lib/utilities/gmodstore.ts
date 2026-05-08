@@ -1,5 +1,5 @@
-import type { UserProperties } from "../interfaces/UserProperties";
-import type { ProductProperties } from "../interfaces/ProductProperties";
+import type { User } from "$lib/types/user";
+import type { Product } from "$lib/types/product";
 
 export const fetchUserData = async ( token: string ) =>
 {
@@ -18,25 +18,18 @@ export const fetchUserData = async ( token: string ) =>
         throw new Error( json.message ?? "Failed to fetch user data." );
     }
 
-    return json.data.user as UserProperties;
+    return json.data.user as User;
 };
 
-export const fetchAllPurchases = async (
-    token: string,
-    userId: string,
-    cursor?: string
-) =>
+export const fetchAllPurchases = async ( token: string, userId: string, cursor?: string ) =>
 {
     // https://docs.pivity.com/#tag/User-Product-Purchases/operation/listUserPurchases
-    const response = await fetch(
-        `https://api.pivity.com/v3/users/${ userId }/purchases?perPage=100&cursor=${ cursor }`,
-        {
-            headers: {
-                "X-Tenant": "gmodstore.com",
-                "Authorization": `Bearer ${ token }`
-            }
+    const response = await fetch( `https://api.pivity.com/v3/users/${ userId }/purchases?perPage=100&cursor=${ cursor }`, {
+        headers: {
+            "X-Tenant": "gmodstore.com",
+            "Authorization": `Bearer ${ token }`
         }
-    );
+    } );
 
     const json = await response.json();
 
@@ -45,17 +38,11 @@ export const fetchAllPurchases = async (
         throw new Error( json.message ?? "Failed to fetch purchases." );
     }
 
-    let purchases: string[] = json.data?.map(
-        ( purchase: ProductProperties ) => purchase.productId
-    );
+    let purchases: string[] = json.data?.map( ( purchase: Product ) => purchase.productId );
 
     if ( purchases && json.cursors?.next )
     {
-        const nextPurchases = await fetchAllPurchases(
-            token,
-            userId,
-            json.cursors.next
-        );
+        const nextPurchases = await fetchAllPurchases( token, userId, json.cursors.next );
 
         purchases = purchases.concat( nextPurchases );
     }
@@ -69,15 +56,12 @@ export const fetchAllProducts = async ( token: string, purchases: string[] ) =>
     purchases.forEach( ( purchase ) => parameters.append( "ids[]", purchase ) );
 
     // https://docs.pivity.com/#tag/Products/operation/getProducts
-    const response = await fetch(
-        `https://api.pivity.com/v3/products/batch?${ parameters }`,
-        {
-            headers: {
-                "X-Tenant": "gmodstore.com",
-                "Authorization": `Bearer ${ token }`
-            }
+    const response = await fetch( `https://api.pivity.com/v3/products/batch?${ parameters }`, {
+        headers: {
+            "X-Tenant": "gmodstore.com",
+            "Authorization": `Bearer ${ token }`
         }
-    );
+    } );
 
     const json = await response.json();
 
@@ -86,7 +70,7 @@ export const fetchAllProducts = async ( token: string, purchases: string[] ) =>
         throw new Error( json.message ?? "Failed to fetch products." );
     }
 
-    let products: ProductProperties[] = json.data;
+    let products: Product[] = json.data;
 
     if ( products && purchases.length > 100 )
     {
@@ -100,21 +84,15 @@ export const fetchAllProducts = async ( token: string, purchases: string[] ) =>
     return products;
 };
 
-export const fetchProductLatestVersion = async (
-    token: string,
-    productId: string
-) =>
+export const fetchProductLatestVersion = async ( token: string, productId: string ) =>
 {
     // https://docs.pivity.com/#tag/Product-Versions/operation/listProductVersions
-    const response = await fetch(
-        `https://api.pivity.com/v3/products/${ productId }/versions`,
-        {
-            headers: {
-                "X-Tenant": "gmodstore.com",
-                "Authorization": `Bearer ${ token }`
-            }
+    const response = await fetch( `https://api.pivity.com/v3/products/${ productId }/versions`, {
+        headers: {
+            "X-Tenant": "gmodstore.com",
+            "Authorization": `Bearer ${ token }`
         }
-    );
+    } );
 
     const json = await response.json();
 
@@ -126,23 +104,16 @@ export const fetchProductLatestVersion = async (
     return json.data[ 0 ].id as string;
 };
 
-export const fetchProductDownloadUrl = async (
-    token: string,
-    productId: string,
-    versionId: string
-) =>
+export const fetchProductDownloadUrl = async ( token: string, productId: string, versionId: string ) =>
 {
     // https://docs.pivity.com/#tag/Product-Versions/operation/getProductDownloadUrl
-    const response = await fetch(
-        `https://api.pivity.com/v3/products/${ productId }/versions/${ versionId }/download`,
-        {
-            method: "POST",
-            headers: {
-                "X-Tenant": "gmodstore.com",
-                "Authorization": `Bearer ${ token }`
-            }
+    const response = await fetch( `https://api.pivity.com/v3/products/${ productId }/versions/${ versionId }/download`, {
+        method: "POST",
+        headers: {
+            "X-Tenant": "gmodstore.com",
+            "Authorization": `Bearer ${ token }`
         }
-    );
+    } );
 
     const json = await response.json();
 
