@@ -84,3 +84,10 @@
         <output>{exception}</output>
     {/if}
 </main>
+
+<style>
+    code {
+        display: block;
+        margin-bottom: 1rem;
+    }
+</style>
