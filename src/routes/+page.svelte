@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { env } from "$env/dynamic/public";
     import { onMount } from "svelte";
     import GitHubCorner from "./(components)/GitHubCorner.svelte";
     import type { User } from "$lib/types/user";
@@ -67,6 +68,8 @@
 
     <h1>📥 GmodStore Downloader</h1>
 
+    <code>Version { env.PUBLIC_VERSION ?? "0.0.1" }</code>
+
     {#if isLoading}
         <i>Please wait, fetching data...</i>
     {:else if token && userData && products}
@@ -81,3 +84,10 @@
         <output>{exception}</output>
     {/if}
 </main>
+
+<style>
+    code {
+        display: block;
+        margin-bottom: 1rem;
+    }
+</style>
