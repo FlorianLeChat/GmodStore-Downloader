@@ -1,6 +1,5 @@
 {
-    "exclude": ["node_modules"],
-    "include": ["*.config.*", "src/**/*.ts", "src/**/*.svelte", "tests/**/*.ts"],
+    "extends": "./.svelte-kit/tsconfig.json",
     "compilerOptions": {
         "lib": ["dom", "dom.iterable", "esnext"],
         "noEmit": true,

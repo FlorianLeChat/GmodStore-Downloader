@@ -1,5 +1,21 @@
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import adapter from "@sveltejs/adapter-static";
 
-export default {
-    preprocess: vitePreprocess()
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+    kit: {
+        typescript: {
+            config: ( config ) =>
+            {
+                config.include.push( "../*.config.*" );
+                return config;
+            }
+        },
+        adapter: adapter(),
+        paths: {
+            // @ts-expect-error Needed for GitLab Pages generation.
+            base: process.argv.includes( "dev" ) ? "" : process.env.BASE_PATH
+        }
+    }
 };
+
+export default config;

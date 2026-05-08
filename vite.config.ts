@@ -1,5 +1,5 @@
-import { svelte } from "@sveltejs/vite-plugin-svelte";
-import { defineConfig } from "vitest/config";
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
 
 export default defineConfig( {
     test: {
@@ -12,5 +12,5 @@ export default defineConfig( {
             }
         ]
     },
-    plugins: [ svelte() ]
+    plugins: [ sveltekit() ]
 } );

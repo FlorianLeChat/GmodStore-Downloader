@@ -1,17 +1,9 @@
 <script lang="ts">
-    import type { UserProperties } from "../interfaces/UserProperties";
-    import type { ProductProperties } from "../interfaces/ProductProperties";
+    import type { User } from "$lib/types/user";
+    import type { Product } from "$lib/types/product";
     import DownloadButton from "./DownloadButton.svelte";
 
-    let {
-        token,
-        userData,
-        products
-    }: {
-        token: string;
-        userData: UserProperties;
-        products: ProductProperties[];
-    } = $props();
+    let { token, userData, products }: { token: string; userData: User; products: Product[] } = $props();
 
     const calculateTotal = () =>
     {
@@ -55,11 +47,7 @@
             <br />
             <DownloadButton {token} {product} />
             —
-            <a
-                rel="noopener noreferrer"
-                href={"https://www.gmodstore.com/market/view/" + product.id}
-                target="_blank"
-            >
+            <a rel="noopener noreferrer" href={"https://www.gmodstore.com/market/view/" + product.id} target="_blank">
                 Store
             </a>
         </li>

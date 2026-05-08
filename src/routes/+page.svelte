@@ -1,18 +1,16 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import GitHubCorner from "./components/GitHubCorner.svelte";
-    import AccountDetails from "./components/AccountDetails.svelte";
-    import { fetchUserData,
-        fetchAllProducts,
-        fetchAllPurchases } from "./utilities/gmodstore";
-    import AuthenticationForm from "./components/AuthenticationForm.svelte";
-    import { downloadProduct } from "./utilities/download";
-    import type { UserProperties } from "./interfaces/UserProperties";
-    import type { ProductProperties } from "./interfaces/ProductProperties";
+    import GitHubCorner from "./(components)/GitHubCorner.svelte";
+    import type { User } from "$lib/types/user";
+    import AccountDetails from "./(components)/AccountDetails.svelte";
+    import type { Product } from "$lib/types/product";
+    import AuthenticationForm from "./(components)/AuthenticationForm.svelte";
+    import { downloadProduct } from "$lib/utilities/download";
+    import { fetchUserData, fetchAllProducts, fetchAllPurchases } from "$lib/utilities/gmodstore";
 
     let token = $state( "" );
-    let userData: UserProperties | undefined = $state();
-    let products: ProductProperties[] = $state( [] );
+    let userData: User | undefined = $state();
+    let products: Product[] = $state( [] );
     let exception = $state( "" );
     let isLoading = $state( false );
 
@@ -20,10 +18,7 @@
     {
         isLoading = true;
         userData = await fetchUserData( token );
-        products = await fetchAllProducts(
-            token,
-            await fetchAllPurchases( token, userData.id )
-        );
+        products = await fetchAllProducts( token, await fetchAllPurchases( token, userData.id ) );
     };
 
     onMount( async () =>

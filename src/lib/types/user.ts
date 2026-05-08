@@ -1,5 +1,5 @@
 // https://docs.pivity.com/#tag/Users/operation/getUser
-export interface UserProperties {
+export interface User {
     id: string;
     name: string;
     slug: string;
