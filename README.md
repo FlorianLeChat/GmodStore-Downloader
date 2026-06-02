@@ -5,6 +5,7 @@
 ![TypeScript](.gitlab/badges/typescript.svg)
 
 ![Svelte](.gitlab/badges/svelte.svg)
+![SvelteKit](.gitlab/badges/sveltekit.svg)
 ![Vite](.gitlab/badges/vite.svg)
 ![Vitest](.gitlab/badges/vitest.svg)
 ![Prettier](.gitlab/badges/prettier.svg)
@@ -19,11 +20,11 @@
 
 ### Introduction
 
-Ce petit site Internet permet de télécharger des addons depuis le [GmodStore](https://www.gmodstore.com/) sans passer par l’interface en ligne, mais en s'appuyant sur son [API](https://docs.pivity.com/). Cette solution est particulièrement utile lorsqu'un propriétaire de compte souhaite offrir à des tiers la possibilité de télécharger ses addons créés ou achetés, sans leur communiquer ses identifiants de connexion. C'est une alternative sécurisée aux « **accès secondaires** ». Le propriétaire doit simplement générer un jeton d'accès avec des permissions limitées, qu'il pourra ensuite partager avec les personnes autorisées.
+Ce petit site Internet permet de télécharger des addons depuis le [GmodStore](https://www.gmodstore.com/) sans passer par l’interface en ligne, mais en s'appuyant sur son [API](https://docs.pivity.com/). Cette solution est particulièrement utile lorsqu'un propriétaire de compte souhaite offrir à des tiers la possibilité de télécharger ses addons créés ou achetés, sans leur communiquer ses identifiants de connexion. C'est une alternative sécurisée aux « **accès secondaires** ». Le propriétaire doit simplement générer un jeton d'accès avec des permissions limitées, qu'il pourra ensuite partager avec les personnes autorisées. 🫣
 
-Les jetons peuvent être générés à cette adresse : https://www.gmodstore.com/settings/personal-access-tokens. Ils doivent comporter les autorisations suivantes : `products:read`, `product-versions:read`, `product-versions:download`, `users:read` et `user-purchases:read`. Une fois créés, le site Internet vous indique la démarche à suivre.
+Les jetons peuvent être générés à cette adresse : https://www.gmodstore.com/settings/personal-access-tokens. Ils doivent comporter les autorisations suivantes : `products:read`, `product-versions:read`, `product-versions:download`, `users:read` et `user-purchases:read`. Une fois créés, le site Internet vous indique la démarche à suivre. 📖
 
-Auparavant, ce projet était développé en [PHP](https://www.php.net/) 🐘 (disponible via la branche `no-svelte`), car l'API GmodStore avait restreint les [en-têtes CORS](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/CORS), empêchant toute communication directe depuis un navigateur. Depuis, cette restriction a été levée, ce qui permet désormais d'utiliser le *framework* [SvelteKit](https://svelte.dev/) 🔥 pour interagir **directement** avec leur API. Cette migration a supprimé la nécessité d'un serveur intermédiaire, améliorant ainsi la confidentialité des données en exécutant l'**intégralité** du site Internet côté client, tout en optimisant ses performances.
+Auparavant, ce projet était développé en [PHP](https://www.php.net/) 🐘 (disponible via la branche `no-svelte`), car l'API GmodStore avait restreint les [en-têtes CORS](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/CORS), empêchant toute communication directe depuis un navigateur. Depuis, cette restriction a été levée, ce qui permet désormais d'utiliser le *framework* [SvelteKit](https://svelte.dev/) 🔥 pour interagir **directement** avec leur API. Cette migration a supprimé la nécessité d'un serveur intermédiaire, améliorant ainsi la confidentialité des données en exécutant l'**intégralité** du site Internet côté client, tout en optimisant ses performances. 🔒
 
 ### Installation
 
@@ -54,11 +55,11 @@ Auparavant, ce projet était développé en [PHP](https://www.php.net/) 🐘 (di
 
 ### Introduction
 
-This small website lets you download addons from the [GmodStore](https://www.gmodstore.com/) without using the online interface, but by relying on its [API](https://docs.pivity.com/). This is particularly useful when an account owner wants to offer third parties a way to download created or purchased addons, without providing personal credentials. It's a secure alternative to "**secondary access**". The owner simply needs to generate an access token with limited permissions, which can then be shared with authorized persons.
+This small website lets you download addons from the [GmodStore](https://www.gmodstore.com/) without using the online interface, but by relying on its [API](https://docs.pivity.com/). This is particularly useful when an account owner wants to offer third parties a way to download created or purchased addons, without providing personal credentials. It's a secure alternative to "**secondary access**". The owner simply needs to generate an access token with limited permissions, which can then be shared with authorized persons. 🫣
 
-Tokens can be generated at this address: https://www.gmodstore.com/settings/personal-access-tokens. They must have the following permissions: `products:read`, `product-versions:read`, `product-versions:download`, `users:read` and `user-purchases:read`. Once created, the website tells you what to do.
+Tokens can be generated at this address: https://www.gmodstore.com/settings/personal-access-tokens. They must have the following permissions: `products:read`, `product-versions:read`, `product-versions:download`, `users:read` and `user-purchases:read`. Once created, the website tells you what to do. 📖
 
-Previously, this project was developed in [PHP](https://www.php.net/) 🐘 (available through the `no-svelte` branch), because the GmodStore API restricted [CORS headers](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/CORS), preventing direct communication from a browser. This restriction has since been removed, allowing usage of [SvelteKit](https://svelte.dev/) 🔥 framework to communicate **directly** with their API. This migration has eliminated need for an intermediary server, improving data privacy by running the **entire** website client-side, while optimizing its performance.
+Previously, this project was developed in [PHP](https://www.php.net/) 🐘 (available through the `no-svelte` branch), because the GmodStore API restricted [CORS headers](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/CORS), preventing direct communication from a browser. This restriction has since been removed, allowing usage of [SvelteKit](https://svelte.dev/) 🔥 framework to communicate **directly** with their API. This migration has eliminated need for an intermediary server, improving data privacy by running the **entire** website client-side, while optimizing its performance. 🔒
 
 ### Setup
 
