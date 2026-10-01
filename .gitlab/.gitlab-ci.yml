@@ -16,7 +16,7 @@ default:
 
 lint:eslint:
     stage: lint
-    image: node:22-alpine
+    image: node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
     before_script:
         - npm ci --cache .npm --prefer-offline
     script:
@@ -29,7 +29,7 @@ lint:eslint:
 
 test:vitest:
     stage: test
-    image: node:22-alpine
+    image: node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
     before_script:
         - npm ci --cache .npm --prefer-offline
     script:
@@ -42,7 +42,7 @@ test:vitest:
 
 build:node:
     stage: build
-    image: node:22-alpine
+    image: node:22-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
     before_script:
         - npm ci --cache .npm --prefer-offline
     script:
@@ -100,7 +100,7 @@ analyze:secret-detection:
 
 deploy:pages:
     stage: deploy
-    image: alpine:3
+    image: alpine:3@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
     rules:
         - if: $CI_COMMIT_TAG
           when: on_success
