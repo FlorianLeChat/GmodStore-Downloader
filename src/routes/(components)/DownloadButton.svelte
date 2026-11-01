@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { downloadProduct } from "$lib/utilities/download";
-    import type { Product } from "$lib/types/product";
+    import { downloadProduct } from "#lib/utilities/download.ts";
+    import type { Product } from "#lib/types/product.ts";
 
     let { token, product }: { token: string; product: Product } = $props();
 </script>

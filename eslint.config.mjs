@@ -3,7 +3,6 @@ import tslint from "typescript-eslint";
 import globals from "globals";
 import stylistic from "@stylistic/eslint-plugin";
 import sveltelint from "eslint-plugin-svelte";
-import svelteConfig from "./svelte.config.js";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig(
@@ -26,7 +25,6 @@ export default defineConfig(
             },
             parserOptions: {
                 parser: tslint.parser,
-                svelteConfig,
                 projectService: true,
                 extraFileExtensions: [ ".svelte" ]
             }

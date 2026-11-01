@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { env } from "$env/dynamic/public";
+    import { PUBLIC_VERSION } from "$app/env/public";
     import { onMount } from "svelte";
     import GitHubCorner from "./(components)/GitHubCorner.svelte";
-    import type { User } from "$lib/types/user";
+    import type { User } from "#lib/types/user.ts";
     import AccountDetails from "./(components)/AccountDetails.svelte";
-    import type { Product } from "$lib/types/product";
+    import type { Product } from "#lib/types/product.ts";
     import AuthenticationForm from "./(components)/AuthenticationForm.svelte";
-    import { downloadProduct } from "$lib/utilities/download";
-    import { fetchUserData, fetchAllProducts, fetchAllPurchases } from "$lib/utilities/gmodstore";
+    import { downloadProduct } from "#lib/utilities/download.ts";
+    import { fetchUserData, fetchAllProducts, fetchAllPurchases } from "#lib/utilities/gmodstore.ts";
 
     let token = $state( "" );
     let userData: User | undefined = $state();
@@ -68,7 +68,7 @@
 
     <h1>📥 GmodStore Downloader</h1>
 
-    <code>Version { env.PUBLIC_VERSION ?? "0.0.1" }</code>
+    <code>Version { PUBLIC_VERSION }</code>
 
     {#if isLoading}
         <i>Please wait, fetching data...</i>

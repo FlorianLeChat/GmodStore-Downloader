@@ -2,7 +2,7 @@ import { fetchUserData,
     fetchAllPurchases,
     fetchAllProducts,
     fetchProductDownloadUrl,
-    fetchProductLatestVersion } from "$lib/utilities/gmodstore";
+    fetchProductLatestVersion } from "#lib/utilities/gmodstore.ts";
 import { describe, it, expect, vi, beforeEach, type Mock } from "vitest";
 
 beforeEach( () =>

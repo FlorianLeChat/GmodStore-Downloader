@@ -1,5 +1,5 @@
-import type { User } from "$lib/types/user";
-import type { Product } from "$lib/types/product";
+import type { User } from "#lib/types/user.ts";
+import type { Product } from "#lib/types/product.ts";
 
 export const fetchUserData = async ( token: string ) =>
 {
