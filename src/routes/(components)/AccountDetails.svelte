@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { User } from "$lib/types/user";
-    import type { Product } from "$lib/types/product";
+    import type { User } from "#lib/types/user.ts";
+    import type { Product } from "#lib/types/product.ts";
     import DownloadButton from "./DownloadButton.svelte";
 
     let { token, userData, products }: { token: string; userData: User; products: Product[] } = $props();
