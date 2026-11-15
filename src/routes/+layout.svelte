@@ -25,7 +25,7 @@
     const isTrackingAllowed = (): boolean =>
     {
         const privacyNavigator = navigator as Navigator & { globalPrivacyControl?: boolean };
-        const respectOptOut = PUBLIC_ANALYTICS_RESPECT_DNT === "true";
+        const respectOptOut = PUBLIC_ANALYTICS_RESPECT_DNT;
         const dntRequested = [ "1", "yes" ].includes( privacyNavigator.doNotTrack ?? "" );
         const gpcRequested = privacyNavigator.globalPrivacyControl === true;
         const optedOut = dntRequested || gpcRequested;
@@ -48,12 +48,12 @@
     <link rel="apple-touch-icon" href={asset( "assets/favicons/180x180.webp" )} type="image/webp" sizes="180x180" />
     <link rel="manifest" href={asset( "manifest.webmanifest" )} crossorigin="use-credentials" />
 
-    {#if PUBLIC_ANALYTICS_ENABLED === "true" && canTrack}
+    {#if PUBLIC_ANALYTICS_ENABLED && canTrack}
         <script
             src={PUBLIC_ANALYTICS_ENDPOINT + "/script.js"}
             defer
             data-errors="true"
-            data-release={PUBLIC_VERSION || undefined}
+            data-release={PUBLIC_VERSION}
             data-website-id={PUBLIC_ANALYTICS_PROJECT_ID}
             data-performance="true"
             data-environment={PUBLIC_ANALYTICS_ENVIRONMENT}
